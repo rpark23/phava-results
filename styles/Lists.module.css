@@ -1,0 +1,22 @@
+.ListsContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.List {
+  margin-left: 3rem;
+}
+
+.tableFooter {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+}
+
+.pagination {
+  align-items: center;
+  display: flex;
+}

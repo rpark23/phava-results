@@ -21,6 +21,7 @@ export default function ResultsTable (props) {
   const [index, setIndex] = useState('');
   const [id, setID] = useState('');
   const [species, setSpecies] = useState('');
+  const [intragenic, setIntragenic] = useState(false);
 
   const[minFReads, setMinFReads] = useState(fReads[0]);
   const[maxFReads, setMaxFreads] = useState(fReads[1]);
@@ -69,8 +70,13 @@ export default function ResultsTable (props) {
     ).filter(
       row => row.species.toLowerCase().indexOf(species.toLowerCase()) > -1
     );
+    if (intragenic) {
+      hits = hits.filter(
+        row => 'intragenic'.indexOf(row.type1) > -1
+      );
+    }
     setHits(hits);
-  }, [index, id, species, fReads, rReads, ratio, runs, irLength, repeatLength]);
+  }, [index, id, species, fReads, rReads, ratio, runs, irLength, repeatLength, intragenic]);
 
   // const changeMinFREads = (newValue) => {
   //   if (newValue) < value
@@ -100,7 +106,7 @@ export default function ResultsTable (props) {
     setPage(Math.ceil(hits.length / pageSize));
   }
 
-  const headerProps = {...props.variables, index, setIndex, id, setID, species, setSpecies };
+  const headerProps = {...props.variables, index, setIndex, id, setID, species, setSpecies, intragenic, setIntragenic };
 
   return (
     <div className={styles.TableContainer}>

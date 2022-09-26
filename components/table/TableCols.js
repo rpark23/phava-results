@@ -1,4 +1,4 @@
-import { ActionIcon, Table, TextInput } from '@mantine/core';
+import { ActionIcon, Table, TextInput, Checkbox } from '@mantine/core';
 
 export const cols = {
   'Index': {
@@ -43,6 +43,9 @@ export const cols = {
     get: (row) => row.lEnd - row.lStart
   },
   "Type": {
-    get: (row) => row.type1
+    get: (row) => row.type1,
+    search: (props) => <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <Checkbox checked={props.intragenic} onChange={(e) => props.setIntragenic(e.target.checked)} style={{ marginTop: '0.25rem' }} label={<p>Intragenic only</p>} />
+    </div>
   },
 }

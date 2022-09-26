@@ -7,6 +7,7 @@ import Intro from "../components/Intro"
 import Charts from "../components/charts/Charts"
 import ChooseCols from "../components/table/ChooseCols"
 import Table from "../components/table/Table"
+import Lists from "../components/lists/Lists"
 
 export default function Home() {
   const [fReads, setFReads] = useState([0, 100]);
@@ -32,6 +33,7 @@ export default function Home() {
       <Charts variables={variables} />
       <ChooseCols included={included} setIncluded={setIncluded} /> 
       <Table included={included} variables={variables} />
+      <Lists variables={variables} />
      </div>
   )
 }
