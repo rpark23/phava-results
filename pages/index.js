@@ -26,7 +26,7 @@ export default function Home() {
     <div className={styles.container}>
       <Head>
         <title>PhaVa</title>
-        <meta name="description" content="View Results from PhaVa" />
+        <meta name="description" content="View latest results from PhaVa on nearly 30,000 long-read sequencing runs" />
         <link rel="icon" href="/images/dna.svg" />
       </Head>
       <Intro />
