@@ -21,8 +21,6 @@ export default function Home() {
   const variables = { fReads, setFReads, rReads, setRReads, ratio, setRatio, runs, setRuns, 
     irLength, setIrLength, repeatLength, setRepeatLength }
 
-  const chooseTableProps = { included, setIncluded }
-
   return (
     <div className={styles.container}>
       <Head>
@@ -33,7 +31,7 @@ export default function Home() {
       <Intro />
       <Charts variables={variables} />
       <ChooseCols included={included} setIncluded={setIncluded} /> 
-      <Table included={included} />
+      <Table included={included} variables={variables} />
      </div>
   )
 }

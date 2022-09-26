@@ -17,22 +17,6 @@ export default function Charts(props) {
   const [species, setSpecies] = useState(null);
   const [counts, setCounts] = useState(null);
 
-  const scrollRight = () => {
-    const variables = document.getElementById('variables');
-    variables.scrollTo({
-      top: 100
-    }); // += 100;
-    // variables.scrollLeft += variables.scrollHeight;
-    //variables.scrollTo(variables.scrollHeight, 0);
-    //variables.scrollTo(20, 0);
-    //console.log(variables.scrollHeight);
-  }
-
-  const scrollLeft = () => {
-    const variables = document.getElementById('variables');
-    console.log(variables.scrollHeight);
-  }
-
   useEffect(() => {
     let [minFReads, maxFReads] = fReads;
     if (maxFReads == 100) {

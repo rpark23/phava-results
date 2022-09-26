@@ -20,16 +20,16 @@ export default function ResultsTable (props) {
 
   useEffect(() => {
     let newIncluded = [];
-    num ? newIncluded.push(["#", "id"]) : null;
-    id ? newIncluded.push(["ID", "index"]) : null;
-    species ? newIncluded.push(["Species", "species"]) : null;
-    fReads ? newIncluded.push(["Forward Reads", "fReads"]) : null;
-    rReads ? newIncluded.push(["Reverse Reads", "rReads"]) : null;
-    ratio ? newIncluded.push(["Ratio", "ratio"]) : null;
-    runs ? newIncluded.push(["Runs", "nRuns"]) : null;
-    irLength ? newIncluded.push(["IR Length", ""]) : null;
-    repeatLength ? newIncluded.push(["Repeat Length", ]) : null;
-    type ? newIncluded.push(["Type", "type1"]) : null;
+    num ? newIncluded.push("Index") : null;
+    id ? newIncluded.push("ID") : null;
+    species ? newIncluded.push("Species") : null;
+    fReads ? newIncluded.push("Forward Reads") : null;
+    rReads ? newIncluded.push("Reverse Reads") : null;
+    ratio ? newIncluded.push("Ratio") : null;
+    runs ? newIncluded.push("Runs") : null;
+    irLength ? newIncluded.push("IR Length") : null;
+    repeatLength ? newIncluded.push("Repeat Length") : null;
+    type ? newIncluded.push("Type") : null;
     setIncluded(newIncluded);
   }, [num, id, fReads, rReads, ratio, runs, irLength, repeatLength, type, species])
 
@@ -52,7 +52,7 @@ export default function ResultsTable (props) {
           </div>
         </div>
         <div className={styles.column} style={{ marginTop: '3vh' }}>
-          <Switch checked={num} onChange={(e) => setNum(e.currentTarget.checked)} label={<span><strong>#</strong> - Assigned index based on number of runs</span>}/>
+          <Switch checked={num} onChange={(e) => setNum(e.currentTarget.checked)} label={<span><strong>Index</strong> - Assigned based on number of runs</span>}/>
           <Switch checked={id} onChange={(e) => setID(e.currentTarget.checked)} label={<span><strong>ID</strong> - Unique identifier: &#123;genome name&#125;:&#123;IR indices&#125;</span>}/>
           <Switch checked={species} onChange={(e) => setSpecies(e.currentTarget.checked)} label={<span><strong>Species</strong> - Species that IR was found in</span>}/>
           <Switch checked={type} onChange={(e) => setType(e.currentTarget.checked)} label={<span><strong>Type</strong> (of IR) - Intragenic, partial (part of IR is within a gene), or intergenic</span>}/>
@@ -61,8 +61,8 @@ export default function ResultsTable (props) {
       <Table style={{ marginTop: '6vh', width: '60%' }}>
         <thead>
           <tr>
-            {included.length ? included.map((col, i) => (
-              <th key={i}>{col[0]}</th>
+            {included.length ? included.map((header, i) => (
+              <th key={i}>{header}</th>
             )) : "No columns included"}
           </tr>
         </thead>
