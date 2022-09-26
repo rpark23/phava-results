@@ -1,0 +1,46 @@
+.TableContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-y: scroll;
+}
+
+.chooseColumns {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 15vh;
+}
+
+.chooseColumns .column {
+  display: flex;
+  flex-direction: column;
+}
+
+.chooseColumns .column > * {
+  margin-top: 0.25rem;
+}
+
+.chooseColumns .row {
+  display: flex;
+  justify-content: space-between;
+  width: 30rem;
+}
+
+.header {
+  width: 80%;
+}
+
+.tableFooter {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+  width: 80%;
+}
+
+.pagination {
+  align-items: center;
+  display: flex;
+}

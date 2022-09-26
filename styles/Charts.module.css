@@ -1,0 +1,115 @@
+.chartsContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+}
+
+.chartsContainer .description {
+  align-items: center;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  min-height: 28vh;
+  justify-content: flex-end;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.variables {
+  display: flex;
+}
+
+/* .leftArrow,
+.rightArrow {
+  margin-top: 15rem;
+} */
+
+.left,
+.right  {
+  background-color: white;
+  height: 5rem;
+  width: 14rem;
+  z-index: 1;
+}
+
+.leftArrow,
+.rightArrow {
+  background-color: white;
+  margin-top: 1.7rem;
+}
+
+.left {
+  display: flex;
+  margin-right: -14rem;
+  justify-content: flex-end;
+}
+
+.right {
+  /* margin-left: -13.5rem; */
+  margin-left: -13.5rem;
+}
+
+.leftArrow:hover,
+.rightArrow:hover {
+  background-color: #E7F5FF;
+  /* color: white; */
+}
+
+.pages {
+  display: flex;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  width: 80rem;
+}
+
+.pages::-webkit-scrollbar {
+  display: none;
+}
+
+.page {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 27rem;
+  margin-left: 0.5rem;
+  width: 79rem;
+  /* min-height: 72vh;
+  scroll-snap-align: end; */
+}
+
+.page .row {
+  display: flex;
+  margin-top: 0.5rem;
+  position: relative;
+  width: 80rem;
+}
+
+.page .row > p {
+  bottom: 1.6rem;
+  color: #555;
+  left: 3rem;
+  position: absolute;
+  transform: rotate(-90deg);
+  transform-origin: 0 0;
+}
+
+.page .row .charts {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 5rem;
+  width: 70rem;
+}
+
+.chart {
+  width: 22rem;
+}
+
+.chart .title {
+  margin-bottom: 1vh;
+  margin-left: 2rem;
+  text-align: center;
+  width: 22rem;
+}
