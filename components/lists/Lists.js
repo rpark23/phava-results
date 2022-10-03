@@ -3,13 +3,14 @@ import styles from '../../styles/Lists.module.css'
 import FullTable from '../../data/irTable.json'
 
 import List from "./List"
-import { ActionIcon, Table, TextInput } from '@mantine/core';
+import { Switch } from '@mantine/core';
 
 export default function ResultsTable (props) {
   const { fReads, setFReads, rReads, setRReads, ratio, setRatio, runs, setRuns, 
     irLength, setIrLength, repeatLength, setRepeatLength } = props.variables;
 
   const [hits, setHits] = useState(FullTable);
+  const [intragenic, setIntragenic] = useState(false);
 
   const [allCount, setAllCount] = useState(null);
   const [speciesCount, setSpeciesCount] = useState(null);
@@ -53,6 +54,11 @@ export default function ResultsTable (props) {
     ).filter(
       row => row.lEnd - row.lStart < 5*(repeatLength[1]+1) + 11
     );
+    if (intragenic) {
+      hits = hits.filter(
+        row => 'intragenic'.indexOf(row.type1) > -1
+      );
+    }
     setHits(hits);
     let allCount = {};
     let speciesCount = {};
@@ -92,14 +98,16 @@ export default function ResultsTable (props) {
     setAllCount(allCount);
     setSpeciesCount(speciesCount);
     setGenusCount(genusCount);
-  }, [fReads, rReads, ratio, runs, irLength, repeatLength]);
+  }, [intragenic, fReads, rReads, ratio, runs, irLength, repeatLength]);
 
   return (
     <div className={styles.ListsContainer}>
+      <h2 style={{ marginTop: '5vh' }}>Taxa with most IRs</h2>
+      <Switch checked={intragenic} onChange={(e) => setIntragenic(e.currentTarget.checked)} label="Intragenic IRs only" style={{ marginTop: '2vh' }}/>
       <div style={{ display: 'flex'}}>
         {speciesCount ? <List hits={speciesCount} name="Species" /> : null}
         {genusCount ? <List hits={genusCount} name="Genus" /> : null}
-        {allCount ? <List hits={allCount} name="Specific Name" /> : null}
+        {allCount ? <List hits={allCount} name="Subspecies (if known)" /> : null}
       </div>
     </div>
    

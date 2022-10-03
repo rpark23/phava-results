@@ -11,7 +11,7 @@ export default function List (props) {
   const { hits, name } = props;
 
   const [page, setPage] = useState(1);
-  const [pageSize, setPageSize] = useState(15);
+  const [pageSize, setPageSize] = useState(10);
 
   const handleFirstPageButtonClick = () => {
     setPage(1);
@@ -31,7 +31,7 @@ export default function List (props) {
 
   return (
     <div className={styles.List}>
-      <Table className={styles.header} style={{ marginTop: '5vh' }}>
+      <Table className={styles.header} style={{ marginTop: '2vh' }}>
         <thead>
           <tr>
             <th>{name}</th>

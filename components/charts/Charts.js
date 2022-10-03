@@ -1,21 +1,18 @@
 import { useEffect, useState } from 'react';
 import styles from '../../styles/Charts.module.css'
 import FullTable from '../../data/irTable.json'
-// import { FullTableCols } from '../tables/cols/FullTableCols'
 
 import Chart from './ChartTemplate'
 
 import { Button, Card } from '@mantine/core';
 import { Carousel } from '@mantine/carousel';
-import { Bluetooth, CaretLeft, CaretRight, ChevronsDown } from 'tabler-icons-react';
+import { ChevronsDown } from 'tabler-icons-react';
 
 export default function Charts(props) {
   const { fReads, setFReads, rReads, setRReads, ratio, setRatio, runs, setRuns, 
     irLength, setIrLength, repeatLength, setRepeatLength } = props.variables;
 
   const [hits, setHits] = useState(FullTable);
-  const [species, setSpecies] = useState(null);
-  const [counts, setCounts] = useState(null);
 
   useEffect(() => {
     let [minFReads, maxFReads] = fReads;
@@ -56,25 +53,6 @@ export default function Charts(props) {
       row => row.lEnd - row.lStart < 5*(repeatLength[1]+1) + 11
     );
     setHits(hits);
-
-    let species = new Map();
-    hits.forEach(row => {
-      if (species.get(row.taxID)) {
-        species.set(row.taxID, species.get(row.taxID)+1)
-      } else {
-        species.set(row.taxID, 1)
-      }
-    })
-    setSpecies(Array.from(species.keys()));
-    setCounts(Array.from(species.values()));
-
-    // console.log(hits);
-    // console.log(species);
-    
-    // for (let species in hits.taxID) {
-    //   console.log(species);
-    // }
-    // console.log(hits.filter(x => x==2).length);
   }, [fReads, rReads, ratio, runs, irLength, repeatLength])
 
   return (
