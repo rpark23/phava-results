@@ -5,6 +5,53 @@ import { ChartInfo } from "./ChartInfo";
 
 import Chart from 'chart.js/auto';
 import { RangeSlider } from '@mantine/core';
+import { Tallymark3 } from 'tabler-icons-react';
+
+// import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
+// import { blue } from '@mui/material/colors';
+// import Slider, { SliderThumb } from '@mui/material/Slider';
+
+// const theme = createTheme({
+//   palette: {
+//     primary: blue,
+//   },
+// });
+
+// const AirbnbSlider = styled(Slider)(({ theme }) => ({
+//   height: 3,
+//   padding: '13px 0',
+//   '& .MuiSlider-thumb': {
+//     height: 27,
+//     width: 27,
+//     backgroundColor: '#fff',
+//     border: '1px solid currentColor',
+//     '&:hover': {
+//       boxShadow: '0 0 0 8px rgba(58, 133, 137, 0.16)',
+//     },
+//     '& .airbnb-bar': {
+//       height: 9,
+//       width: 1,
+//       backgroundColor: 'currentColor',
+//       marginLeft: 1,
+//       marginRight: 1,
+//     },
+//   },
+//   '& .MuiSlider-track': {
+//     height: 3,
+//   },
+// }));
+
+// function AirbnbThumbComponent(props) {
+//   const { children, ...other } = props;
+//   return (
+//     <SliderThumb {...other}>
+//       {children}
+//       <span className="airbnb-bar" />
+//       <span className="airbnb-bar" />
+//       <span className="airbnb-bar" />
+//     </SliderThumb>
+//   );
+// }
 
 export default function ChartTemplate (props) {
   const { values, setValues, id } = props;
@@ -14,19 +61,13 @@ export default function ChartTemplate (props) {
   const buildChart = () => {
     let { data, labels } = getChart();
 
+    console.log(data, labels);
+
     let i = Math.round(values[0]); 
     let j = Math.round(values[1]);
 
-    let test = Array(i-min).fill('rgba(224, 224, 224, 1)') //+ Array(j-i+1).fill('rgba(25, 118, 210, 1)') + Array(max-j).fill('rgba(224, 224, 224, 1)');
-    // console.log(i-min, j-i+1, max-j);
-    // console.log(Array(i-min).fill('rgba(224, 224, 224, 1)'));
+    let test = Array(i-min).fill('rgba(224, 224, 224, 1)')
     let background = test.concat(Array(j-i+1).fill('rgba(25, 118, 210, 1)'), Array(max-j).fill('rgba(224, 224, 224, 1)'));
-    // console.log(test.length);
-
-    // let background = Array(max-min+1).fill('rgba(224, 224, 224, 1)');
-    // for (let i=Math.round(values[0]); i<=Math.round(values[1]); i++) {
-    //   background[i-min] = 'rgba(25, 118, 210, 1)';
-    // }
 
     const ctx = document.getElementById(id);
     const myChart = new Chart(ctx, {
@@ -64,7 +105,9 @@ export default function ChartTemplate (props) {
           legend: {
             display: false,
           }
-        }
+        },
+        normalized: true
+        // parsing: false
       }
     });
     return myChart;
@@ -77,6 +120,13 @@ export default function ChartTemplate (props) {
       myChart.destroy();
     };
   }, [ values ]);
+
+  // const handleChange = (e) => {
+  //   e.preventDefault();
+  //   setAnimation(false);
+  //   const { value } = e.target;
+  //   setValues(value);
+  // };
 
   return (
     <div className={styles.chart}>
@@ -96,9 +146,24 @@ export default function ChartTemplate (props) {
         markLabel: { marginTop: 10, color: "#777", fontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif", fontSize: '0.8rem' },
         mark: { borderColor: "#999", borderRadius: 1, height: 5, width: 1, transform: 'translateX(-1px) translateY(-1px)' },
         label: { backgroundColor: "#777" } })}
-        thumbSize={20}
+        thumbChildren={<Tallymark3 size={20} />}
+        thumbSize={24}
         label={getLabel}
       />
+      {/* <div className={styles.slider}>
+        <ThemeProvider theme={theme}>
+          <AirbnbSlider
+            components={{ Thumb: AirbnbThumbComponent }}
+            value={values}
+            onChange={handleChange}
+            valueLabelDisplay="auto"
+            valueLabelFormat={getLabel}
+            disableSwap
+            marks={marks}
+            color="primary"
+          />
+         </ThemeProvider>
+      </div> */}
     </div>
   )
 }

@@ -34,7 +34,7 @@ export const cols = {
     get: (row) => row.rReads
   },
   "Ratio": {
-    get: (row) => row.ratio
+    get: (row) => Math.round(row.ratio*10000) / 10000
   },
   "Runs": {
     get: (row) => row.nRuns
@@ -48,7 +48,9 @@ export const cols = {
   "Type 1": {
     get: (row) => row.type1,
     search: (props) => <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <Checkbox checked={props.intragenic} onChange={(e) => props.setIntragenic(e.target.checked)} style={{ marginTop: '0.25rem' }} label={<p>Intragenic only</p>} />
+      <Checkbox checked={props.intragenic1} onChange={(e) => props.setIntragenic1(e.target.checked)} size="xs" style={{ marginTop: '0.25rem' }} label={<p style={{ fontWeight: 500, marginLeft: '-0.4rem' }}>Intragenic</p>} />
+      <Checkbox checked={props.partial1} onChange={(e) => props.setPartial1(e.target.checked)} size="xs" style={{ marginTop: '0.25rem' }} label={<p style={{ fontWeight: 500, marginLeft: '-0.4rem' }}>Partial</p>} />
+      <Checkbox checked={props.intergenic1} onChange={(e) => props.setIntergenic1(e.target.checked)} size="xs" style={{ marginTop: '0.25rem' }} label={<p style={{ fontWeight: 500, marginLeft: '-0.4rem' }}>Intergenic</p>} />
     </div>
   },
   "Genbank 1": {
@@ -58,7 +60,7 @@ export const cols = {
     get: (row) => row.pfam1
   },
   "Type 2": {
-    get: (row) => row.type2,
+    get: (row) => row.type2
   },
   "Genbank 2": {
     get: (row) => row.gb2

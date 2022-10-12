@@ -43,3 +43,8 @@
   align-items: center;
   display: flex;
 }
+
+.row:hover {
+  background-color: #E7F5FF;
+  cursor: pointer;
+}
