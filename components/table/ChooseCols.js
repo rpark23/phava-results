@@ -55,7 +55,7 @@ export default function ResultsTable (props) {
     <div className={styles.TableContainer}>
       <div className={styles.chooseColumns}>
         <h2>Choose columns to display</h2>
-        <div className={styles.row} style={{ marginTop: '4vh' }}>
+        <div className={styles.horizontal} style={{ marginTop: '4vh' }}>
           <div className={styles.column}>
             <Switch checked={fReads} onChange={(e) => setFReads(e.currentTarget.checked)} label="Forward Reads"/>
             <Switch checked={rReads} onChange={(e) => setRReads(e.currentTarget.checked)} label="Reverse Reads"/>

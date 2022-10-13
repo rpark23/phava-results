@@ -1,8 +1,24 @@
 import { useEffect, useState } from 'react';
 import { Button, Modal } from '@mantine/core';
 
+import rawIRtable from "../../data/rawIRtable.json"
+import RunTable from "../table/RunTable"
+import { cols }  from './RunCols';
+
 export default function IRinfo (props) {
   const { opened, setOpened, ir } = props;
+
+  const [ data, setData ] = useState(null);
+
+  useEffect(() => {
+    if (ir) {
+      const runs = rawIRtable.filter(
+        row => row.id == ir.index
+      );
+      console.log(typeof(Object.keys(cols)));
+      setData(runs);
+    }
+  }, [ir])
   
   return (
     <>
@@ -16,15 +32,16 @@ export default function IRinfo (props) {
             <h4>IR Type 1:</h4>
             <p>&nbsp;{ir.type1}</p>
           </div>
-          <div style={{ marginRight: '3rem' }}>
-            <h4>IR Type 2:</h4>
-            <p>&nbsp;{ir.type2}</p>
-          </div>
-          <div>
-            <h4>IR Type 3:</h4>
-            <p>&nbsp;{ir.type3}</p>
-          </div>
-          
+          {ir.type2 ? 
+            <div style={{ marginRight: '3rem' }}>
+              <h4>IR Type 2:</h4>
+              <p>&nbsp;{ir.type2}</p>
+            </div> : null}
+          {ir.type3 ?
+            <div>
+              <h4>IR Type 3:</h4>
+              <p>&nbsp;{ir.type3}</p>
+            </div> : null}
         </div>
         <br/>
         <div style={{ display: 'flex' }}>
@@ -72,6 +89,9 @@ export default function IRinfo (props) {
           <p><strong>Pfam 3:</strong> {ir.pfam3}</p>
           <p><strong>GenBank 3:</strong> {ir.gb3}</p>
         </> : null}
+        {/* {runs ? 
+          <RunTable data={data} /> : null
+        } */}
         
       </Modal> : null}
     </>
