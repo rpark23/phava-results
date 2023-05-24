@@ -5,6 +5,12 @@
   min-height: 100vh;
 }
 
+@media (max-width: 80rem) {
+  .ListsContainer {
+    display: none;
+  }
+}
+
 .List {
   margin-left: 3rem;
 }

@@ -6,6 +6,12 @@
   width: 100%;
 }
 
+@media (max-width: 80rem) {
+  .chartsContainer {
+    display: none;
+  }
+}
+
 .chartsContainer .description {
   align-items: center;
   background-color: white;

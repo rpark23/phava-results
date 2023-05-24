@@ -17,6 +17,18 @@
   width: 50rem;
 }
 
+@media (max-width: 55rem) {
+  .title {
+    margin-top: 20vh;
+  }
+
+  .description {
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+    width: 80%;
+  }
+}
+
 .description a {
   color: #0070f3;
   text-decoration: none;
@@ -27,8 +39,25 @@
 }
 
 .scroll {
+  display: block;
   margin-top: 12vh;
   margin-bottom: 1.2vh;
+}
+
+.mobile {
+   display: none;
+}
+
+@media (max-width: 80rem) {
+  .scroll {
+    display: none;
+  }
+
+  .mobile {
+    display: block;
+    margin-top: 4vh;
+    margin-bottom: 1.2vh;
+  }
 }
 
 .footer {
@@ -44,4 +73,10 @@
 .footer a {
   color: black;
   text-decoration: none;
+}
+
+@media (max-width: 55rem) {
+  .footer {
+    display: none;
+  }
 }

@@ -15,6 +15,7 @@ export default function Intro() {
         long read sequencing runs from 4,022 different strains and species of bacteria.
       </p>
       <p className={styles.scroll}>Scroll down to view results</p>
+      <p className={styles.mobile}><em>Access this page on a wider screen to view results</em></p>
       <footer className={styles.footer}>
         <a  
           href="https://www.bhattlab.com/"
